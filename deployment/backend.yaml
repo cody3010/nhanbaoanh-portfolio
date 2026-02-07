@@ -1,0 +1,42 @@
+@"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cody-backend
+  namespace: cody-apps
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: nginx-backend
+        image: codyregistry2026.azurecr.io/cody-backend:v1
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-svc   
+  namespace: cody-apps
+spec:
+  type: ClusterIP     # Chỉ chạy nội bộ, Internet không gọi được
+  selector:
+    app: backend
+  ports:
+  - port: 80
+    targetPort: 80
+"@ | Out-File -Encoding UTF8 backend.yaml

@@ -1,0 +1,49 @@
+@"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cody-vietnam
+  namespace: cody-apps
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vietnam
+  template:
+    metadata:
+      labels:
+        app: vietnam
+    spec:
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app: vietnam
+      containers:
+      - name: nginx-vietnam
+        image: $ACRServer/cody-vietnam:v1
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vietnam-svc
+  namespace: cody-apps
+spec:
+  type: ClusterIP
+  selector:
+    app: vietnam
+  ports:
+  - port: 80
+    targetPort: 80
+"@ | Out-File -Encoding UTF8 cody-vietnam.yaml

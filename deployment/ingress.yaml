@@ -1,0 +1,37 @@
+@"
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cody-ingress
+  namespace: cody-apps
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+    appgw.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+  - hosts:
+    - codyaws.cloud
+    secretName: cody-tls-secret
+  rules:
+  - host: codyaws.cloud
+    http:
+      paths:
+      # 1. Đường dẫn cho Web VIETNAM (Khi bấm nút Vietnam)
+      - path: /vietnam
+        pathType: Prefix
+        backend:
+          service:
+            name: vietnam-svc
+            port:
+              number: 80
+
+      # 3. Đường dẫn MẶC ĐỊNH (Trang chủ Intro)
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-svc
+            port:
+              number: 80
+"@ | Out-File -Encoding UTF8 ingress.yaml

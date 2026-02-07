@@ -1,0 +1,23 @@
+@"
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: secure-frontend-ingress
+  namespace: cody-apps
+spec:
+  podSelector:
+    matchLabels:
+      app: cody-frontend
+  policyTypes:
+  - Ingress
+  ingress:
+  # 1. Cho phép AGIC đi vào
+  - from:
+    - ipBlock:
+        cidr: 10.0.16.0/24
+
+  # 2. Cho phép Health Check. Nếu thiếu thì AGIC sẽ báo Backend Unhealthy và cắt kết nối
+  - from:
+    - ipBlock:
+        cidr: 168.63.129.16/32  # IP Probe Azure (Mặc định)
+"@ | Out-File -Encoding UTF8 secure-frontend.yaml
