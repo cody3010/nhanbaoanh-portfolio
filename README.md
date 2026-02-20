@@ -62,3 +62,33 @@ If you wish to deploy this architecture, ensure you have the following prerequis
 1. Review the variables in **Step 1** of the script and update them to match your naming conventions, passwords, and custom domain (`$DomainName`).
 2. Execute the script sequentially block by block using PowerShell or Bash.
 3. Allow approximately 45-60 minutes for the full deployment (VPN Gateways and AKS clusters take the most time).
+
+
+## 📸 Deployment Validation (Proof of Work)
+*Below are the actual results from the Azure Portal and AKS Terminal after running the infrastructure scripts.*
+
+<details>
+<summary><b>1. Network Routing & Forced Tunneling (UDRs)</b></summary>
+<br>
+Chứng minh toàn bộ traffic từ Spoke được ép đi qua IP của Hub Firewall (10.0.1.4).
+<br><br>
+![Route Table AKS](./images/RTB-AKS-Nodes.png)
+![Route Table Database](./images/RTB-Database.png)
+</details>
+
+<details>
+<summary><b>2. Strict Network Security Groups (NSGs)</b></summary>
+<br>
+Giao diện portal thể hiện các rule chặn/thả tự động được tạo ra chuẩn xác.
+<br><br>
+![NSG Database](./images/NSG-Database.png)
+![NSG AKS](./images/NSG-AKS-Nodes.png)
+</details>
+
+<details>
+<summary><b>3. AKS Horizontal Pod Autoscaler (HPA)</b></summary>
+<br>
+Trạng thái các Pod tự động co giãn dựa trên mức tiêu thụ CPU/RAM.
+<br><br>
+![HPA Status](./images/Horizontal-Pod-Autoscaler.png)
+</details>
