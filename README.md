@@ -72,10 +72,13 @@ If you wish to deploy this architecture, ensure you have the following prerequis
 <br>
 Demonstrates successful VNet peering between Hub and Spoke, the active Site-to-Site VPN Gateways, and a successful ICMP ping test from the Azure Jumpbox (10.0.10.4) strictly routed to the Simulated On-Premises server (172.16.1.4).
 <br><br>
-  
-![VNet Peering](./images/VNet%20Peering.png)
-![VPN Gateways](./images/VPN%20Site-to-Site.png)
-![Ping Test On-Prem](./images/Test-VPN-Connection.png)
+
+![VPN Gateways](Images/VPN-Site-to-Site.png)
+
+![VNet Peering](Images/VNet-Peering.png)
+
+![Ping Test On-Prem](Images/Test-VPN-Connection.png)
+
 </details>
 
 <details>
@@ -121,10 +124,14 @@ Portal interface showcasing the precise configuration of automated Allow/Deny se
 Proves the successful deployment of the microservices via AGIC. It shows the valid Let's Encrypt SSL certificates dynamically provisioned by cert-manager, and the live web interfaces of the Frontend and Backend pods accessed via the custom public domain.
 <br><br>
   
-![SSL Certificate Ready](./images/SSL.png)
-![Frontend Live](./images/cody-frontend.jpg)
-![Vietnam Live](./images/cody-vietnam.jpg)
-![Backend Live](./images/cody-backend.jpg)
+![SSL Certificate Ready](Images/SSL.png)
+
+![Frontend Live](Images/cody-frontend.png)
+
+![Vietnam Live](Images/cody-vietnam.png)
+
+![Backend Live](Images/cody-backend.png)
+
 </details>
 
 <details>
@@ -132,5 +139,7 @@ Proves the successful deployment of the microservices via AGIC. It shows the val
 <br>
 Live CLI output confirming that the Horizontal Pod Autoscaler (HPA) is actively monitoring CPU/Memory metrics and scaling the microservice replicas dynamically to handle load changes.
 <br><br>
-![HPA Status](./images/Horizontal-Pod-Autoscaler.png)
+  
+![HPA Status](Images/Horizontal-Pod-Autoscaler.png)
+
 </details>
