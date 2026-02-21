@@ -65,12 +65,23 @@ If you wish to deploy this architecture, ensure you have the following prerequis
 
 
 ## 📸 Deployment Validation (Proof of Work)
-*Below are the actual results from the Azure Portal and AKS Terminal after running the infrastructure scripts.*
+*Below are the actual results and live tests from the Azure Portal and CLI after running the infrastructure scripts, proving the operational status of the architecture.*
 
 <details>
-<summary><b>1. Network Routing & Forced Tunneling (UDRs)</b></summary>
+<summary><b>1. Hybrid Cloud Connectivity (Site-to-Site VPN & Peering)</b></summary>
 <br>
-Demonstrates that all outbound traffic from the Spoke VNets is forcefully routed through the Hub Azure Firewall's private IP (10.0.1.4) for centralized inspection.
+Demonstrates successful VNet peering between Hub and Spoke, the active Site-to-Site VPN Gateways, and a successful ICMP ping test from the Azure Jumpbox (10.0.10.4) strictly routed to the Simulated On-Premises server (172.16.1.4).
+<br><br>
+  
+![VNet Peering](./images/VNet%20Peering.png)
+![VPN Gateways](./images/VPN%20Site-to-Site.png)
+![Ping Test On-Prem](./images/Test-VPN-Connection.png)
+</details>
+
+<details>
+<summary><b>2. Network Routing & Forced Tunneling (UDRs & Firewall)</b></summary>
+<br>
+Demonstrates that all outbound traffic from the VNets is forcefully routed through the Hub Azure Firewall's private IP (10.0.1.4) for centralized inspection. Includes an outbound connectivity test verifying that the Jumpbox correctly routes traffic through the Firewall for Windows Updates.
 <br><br>
   
 ![Route Table AKS](Images/RTB-AKS-Nodes.png)
@@ -81,12 +92,13 @@ Demonstrates that all outbound traffic from the Spoke VNets is forcefully routed
 
 ![Route Table Virtual Nodes](Images/RTB-Virtual-Nodes.png)
 
+![Firewall Outbound Test](Images/Jumpbox-WindowUpdate-via-Firewall.png)
 </details>
 
 <details>
-<summary><b>2. Strict Network Security Groups (NSGs)</b></summary>
+<summary><b>3. Strict Network Security Groups (NSGs)</b></summary>
 <br>
-Portal interface showcasing the precise configuration of automated Allow/Deny security rules, ensuring Zero Trust network access across subnets.
+Portal interface showcasing the precise configuration of automated Allow/Deny security rules, ensuring Zero Trust network access across all subnets.
 <br><br>
   
 ![NSG AKS](Images/NSG-AKS-Nodes.png)
@@ -104,11 +116,21 @@ Portal interface showcasing the precise configuration of automated Allow/Deny se
 </details>
 
 <details>
-<summary><b>3. AKS Horizontal Pod Autoscaler (HPA)</b></summary>
+<summary><b>4. Application Delivery & Automated SSL/TLS</b></summary>
 <br>
-Live status of application Pods automatically scaling in and out based on real-time CPU and Memory consumption thresholds.
+Proves the successful deployment of the microservices via AGIC. It shows the valid Let's Encrypt SSL certificates dynamically provisioned by cert-manager, and the live web interfaces of the Frontend and Backend pods accessed via the custom public domain.
 <br><br>
   
-![HPA Status](Images/Horizontal-Pod-Autoscaler.png)
+![SSL Certificate Ready](./images/SSL.png)
+![Frontend Live](./images/cody-frontend.jpg)
+![Vietnam Live](./images/cody-vietnam.jpg)
+![Backend Live](./images/cody-backend.jpg)
+</details>
 
+<details>
+<summary><b>5. Kubernetes Workload Auto-scaling (HPA)</b></summary>
+<br>
+Live CLI output confirming that the Horizontal Pod Autoscaler (HPA) is actively monitoring CPU/Memory metrics and scaling the microservice replicas dynamically to handle load changes.
+<br><br>
+![HPA Status](./images/Horizontal-Pod-Autoscaler.png)
 </details>
