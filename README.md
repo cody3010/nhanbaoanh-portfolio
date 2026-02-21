@@ -88,8 +88,19 @@ Demonstrates that all outbound traffic from the Spoke VNets is forcefully routed
 <br>
 Portal interface showcasing the precise configuration of automated Allow/Deny security rules, ensuring Zero Trust network access across subnets.
 <br><br>
-![NSG Database](./images/NSG-Database.png)
-![NSG AKS](./images/NSG-AKS-Nodes.png)
+  
+![NSG AKS](Images/NSG-AKS-Nodes.png)
+
+![NSG AppGw](Images/NSG-AppGw.png)
+
+![NSG Bastion](Images/NSG-Bastion.png)
+
+![NSG Database](Images/NSG-Database.png)
+
+![NSG Management](Images/NSG-Management.png)
+
+![NSG Virtual-Nodes](Images/RTB-Virtual-Nodes.png)
+
 </details>
 
 <details>
@@ -97,5 +108,7 @@ Portal interface showcasing the precise configuration of automated Allow/Deny se
 <br>
 Live status of application Pods automatically scaling in and out based on real-time CPU and Memory consumption thresholds.
 <br><br>
-![HPA Status](./images/Horizontal-Pod-Autoscaler.png)
+  
+![HPA Status](Images/Horizontal-Pod-Autoscaler.png)
+
 </details>
