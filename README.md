@@ -70,16 +70,23 @@ If you wish to deploy this architecture, ensure you have the following prerequis
 <details>
 <summary><b>1. Network Routing & Forced Tunneling (UDRs)</b></summary>
 <br>
-Chứng minh toàn bộ traffic từ Spoke được ép đi qua IP của Hub Firewall (10.0.1.4).
+Demonstrates that all outbound traffic from the Spoke VNets is forcefully routed through the Hub Azure Firewall's private IP (10.0.1.4) for centralized inspection.
 <br><br>
-![Route Table AKS](./images/RTB-AKS-Nodes.png)
-![Route Table Database](./images/RTB-Database.png)
+  
+![Route Table AKS](Images/RTB-AKS-Nodes.png)
+
+![Route Table Database](Images/RTB-Database.png)
+
+![Route Table Management](Images/RTB-Management.png)
+
+![Route Table Virtual Nodes](Images/RTB-Virtual-Nodes.png)
+
 </details>
 
 <details>
 <summary><b>2. Strict Network Security Groups (NSGs)</b></summary>
 <br>
-Giao diện portal thể hiện các rule chặn/thả tự động được tạo ra chuẩn xác.
+Portal interface showcasing the precise configuration of automated Allow/Deny security rules, ensuring Zero Trust network access across subnets.
 <br><br>
 ![NSG Database](./images/NSG-Database.png)
 ![NSG AKS](./images/NSG-AKS-Nodes.png)
@@ -88,7 +95,7 @@ Giao diện portal thể hiện các rule chặn/thả tự động được t�
 <details>
 <summary><b>3. AKS Horizontal Pod Autoscaler (HPA)</b></summary>
 <br>
-Trạng thái các Pod tự động co giãn dựa trên mức tiêu thụ CPU/RAM.
+Live status of application Pods automatically scaling in and out based on real-time CPU and Memory consumption thresholds.
 <br><br>
 ![HPA Status](./images/Horizontal-Pod-Autoscaler.png)
 </details>
