@@ -22,7 +22,7 @@ This architecture is designed to host containerized microservices via Azure Kube
 
 ### ⚙️ Deployment Phases
 
-The deployment script (divided into 45 steps) is categorized into the following logical phases:
+The deployment script is categorized into the following logical phases:
 
 **Phase 1: Core Networking & Routing**
 * Provision Hub and Spoke Virtual Networks (VNets).
