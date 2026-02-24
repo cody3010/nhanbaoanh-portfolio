@@ -100,6 +100,8 @@ Demonstrates that all outbound traffic from the VNets is forcefully routed throu
 
 ![Route Table Management](Images/RTB-Management.png)
 
+![Route Table VPN_Gateway](Images/RTB-VPN-Gateway.png)
+
 ![Route Table Virtual Nodes](Images/RTB-Virtual-Nodes.png)
 
 ![Firewall Outbound Test](Images/Jumpbox-WindowUpdate-via-Firewall.png)
