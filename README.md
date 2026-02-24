@@ -150,7 +150,7 @@ Confirms that the Azure SQL Server is completely hidden from the public internet
 
 ![DNS Record SQL](Images/Record-Private-DNS-Zone.png)
 
-![Jumpbox to SQL](Images/Jumpbox-to-SQL-Server.jpg)
+![Jumpbox to SQL](Images/Jumpbox-to-SQL-Server.png)
 
 ![DNS Resolution SQL from On-Prem](Images/DNS-Resolution-OnPrem-to-SQL-PrivateEndpoint.png)
 
@@ -176,11 +176,11 @@ Proves the successful deployment of the microservices via AGIC. It shows the val
   
 ![SSL Certificate Ready](Images/SSL.png)
 
-![Frontend Live](Images/cody-frontend.jpg)
+![Frontend Live](Images/cody-frontend.png)
 
-![Vietnam Live](Images/cody-vietnam.jpg)
+![Vietnam Live](Images/cody-vietnam.png)
 
-![Backend Live](Images/cody-backend.jpg)
+![Backend Live](Images/cody-backend.png)
 
 </details>
 
