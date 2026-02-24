@@ -1,3 +1,35 @@
+<#
+.SYNOPSIS
+    Automated Deployment Script for Enterprise Azure Hub-and-Spoke Architecture.
+
+.DESCRIPTION
+    This script provisions a complete, secure Hybrid Cloud environment on Microsoft Azure.
+    It deploys a Hub-and-Spoke network topology featuring centralized egress traffic 
+    inspection via Azure Firewall, Site-to-Site VPN for cross-premises connectivity, 
+    Azure Kubernetes Service (AKS) with Application Gateway Ingress Controller (AGIC),
+    and strictly isolated PaaS services (Azure SQL) using Azure Private Link combined 
+    with Advanced Hybrid DNS Resolution (Azure DNS Private Resolver).
+
+.AUTHOR
+    Nhan Bao Anh (GitHub: cody3010)
+
+.DATE
+    February 2026
+
+.VERSION
+    1.0.0
+
+.PREREQUISITES
+    - Azure CLI installed and authenticated (Run 'az login' before executing).
+    - Active Azure Subscription with Contributor/Owner privileges.
+    - PowerShell 5.1 or later.
+
+.NOTES
+    IMPORTANT: Please review and update the variables in "Section 1" (such as $Location, 
+    Address Prefixes, and Admin Passwords) to match your specific deployment requirements 
+    before running this script.
+#>
+
 # ====================================================
 # 1. KHAI BAO BIEN (Mo hinh Hub-and-Spoke)
 # ====================================================
@@ -2295,6 +2327,7 @@ az vm run-command invoke `
   --command-id RunShellScript `
   --scripts "nslookup cody-sqlserver-2026.database.windows.net $OnPremDnsIP" `
   -o tsv
+
 
 
 
