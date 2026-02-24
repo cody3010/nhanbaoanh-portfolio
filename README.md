@@ -66,7 +66,7 @@ Before executing the deployment scripts, ensure you have the following ready:
 ## 📝 Usage
 1. Review the variables in **Step 1** of the script and update them to match your naming conventions, passwords, and custom domain (`$DomainName`).
 2. Execute the script sequentially block by block using PowerShell or Bash.
-3. Allow approximately 45-60 minutes for the full deployment (VPN Gateways and AKS clusters take the most time).
+3. Allow approximately 60-100 minutes for the full deployment (Firewall Azure, VPN Gateways and AKS clusters take the most time).
 
 
 ## 📸 Deployment Validation (Proof of Work)
